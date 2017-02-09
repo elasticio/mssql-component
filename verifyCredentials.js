@@ -10,6 +10,7 @@ module.exports = function verifyCredentials(credentials, cb) {
     var connection = new sql.Connection(credentials.uri);
     yield connection.connect();
     console.log('Verification completed successfully');
+    yield connection.close();
     cb(null, {verified: true});
   }).catch(err => {
     console.log('Error occurred', err.stack || err);

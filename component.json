@@ -3,10 +3,11 @@
   "description": "elastic.io integration component for Microsoft SQL Server",
   "credentials": {
     "fields": {
-      "name": {
-        "label": "My API Key",
+      "uri": {
+        "label": "Connection URI",
         "required": true,
-        "viewClass": "TextFieldView"
+        "viewClass": "TextFieldView",
+        "placeholder": "mssql://username:password@localhost/database"
       }
     }
   }

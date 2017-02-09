@@ -1,23 +1,15 @@
 'use strict';
 const co = require('co');
-const rp = require('request-promise');
+const sql = require('co-mssql');
 
 // This function will be called by the platform to verify credentials
 module.exports = function verifyCredentials(credentials, cb) {
   console.log('Credentials passed for verification %j', credentials);
-
   co(function*() {
-    console.log('Fetching user information');
-
-    const test = yield rp({
-      uri: 'https://cdn.elastic.io/test.json',
-      json: true
-    });
-
-    console.log('Fetched JSON value=%j', test);
-
-    console.log('Verification completed');
-
+    console.log('Connecting to the database');
+    var connection = new sql.Connection(credentials.uri);
+    yield connection.connect();
+    console.log('Verification completed successfully');
     cb(null, {verified: true});
   }).catch(err => {
     console.log('Error occurred', err.stack || err);

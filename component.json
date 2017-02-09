@@ -10,5 +10,59 @@
         "placeholder": "mssql://username:password@localhost/database"
       }
     }
+  },
+  "actions": {
+    "insert": {
+      "title": "INSERT/UPDATE/DELETE",
+      "main": "./lib/actions/insert.js",
+      "fields": {
+        "query": {
+          "label": "SQL Query",
+          "required": true,
+          "viewClass": "TextAreaWithNoteView",
+          "placeholder": "INSERT INTO films (code,title,kind) VALUES (${code},${title},${kind})",
+          "note": "You can use properties of message body as <i>${values}</i> in your insert or update or delete"
+        }
+      }
+    },
+    "selectAction": {
+      "title": "SELECT",
+      "main": "./lib/actions/select.js",
+      "fields": {
+        "query": {
+          "label": "SQL Query",
+          "required": true,
+          "viewClass": "TextAreaWithNoteView",
+          "placeholder": "SELECT * FROM films WHERE title LIKE ${'%' + query + '%'}",
+          "note": "You can use properties of message body as <i>${values}</i> in your query"
+        },
+        "batch": {
+          "label": "Bundle results in batches",
+          "required": false,
+          "viewClass": "CheckBoxView"
+        }
+      }
+    }
+  },
+  "triggers": {
+    "selectTrigger": {
+      "title": "SELECT",
+      "main": "./lib/actions/select.js",
+      "type": "polling",
+      "fields": {
+        "query": {
+          "label": "SQL Query",
+          "required": true,
+          "viewClass": "TextAreaWithNoteView",
+          "placeholder": "SELECT * FROM films WHERE title LIKE ${'%' + query + '%'}",
+          "note": "You can use properties of message body as <i>${values}</i> in your insert or update or delete"
+        },
+        "batch": {
+          "label": "Bundle results in batches",
+          "required": false,
+          "viewClass": "CheckBoxView"
+        }
+      }
+    }
   }
 }

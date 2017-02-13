@@ -20,8 +20,8 @@
           "label": "SQL Query",
           "required": true,
           "viewClass": "TextAreaWithNoteView",
-          "placeholder": "INSERT INTO films (code,title,kind) VALUES (${code},${title},${kind})",
-          "note": "You can use properties of message body as <i>${values}</i> in your insert or update or delete"
+          "placeholder": "INSERT INTO films (code,title,kind) VALUES (@code:number,@title:string,@kind:string)",
+          "note": "You can use parameters of message body as <i>@value:number</i> and type is <i>:type</i>"
         }
       }
     },

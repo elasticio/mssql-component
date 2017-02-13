@@ -54,6 +54,7 @@ Following types are supported:
  * ``bigint``
  * ``boolean`` (will be converted to MSSQL ``bit``)
  * ``date``
+
 more details can be found [here](https://github.com/elasticio/mssql-component/blob/master/lib/actions/insert.js#L25)
 
 ## Authentication

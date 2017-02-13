@@ -13,6 +13,43 @@ Before you can deploy any code into elastic.io **you must be a registered elasti
 
 ## Getting Started
 
+### SELECT Trigger and Action
+
+With this action you may fetch data out of the database, e.g. using ``SELECT`` statement. 
+This trigger & action has no limitations on the number of rows so you may expect to get all of these
+via sequential fetching that is implemented within the node.js ``mssql`` driver.
+
+### INSERT/DELETE/UPDATE Action
+
+![image](https://cloud.githubusercontent.com/assets/56208/22904204/cef8cb06-f23b-11e6-998f-3fe65ab81540.png)
+
+You may use this action to do the operations that are not producing output rows but do the database manipulations, 
+e.g. ``INSERT``, ``UPDATE`` or ``DELETE`` statements. Internally we use prepared statements, so all incoming data is
+validated against SQL injetion, however we had to build a connection from JavaSscript types to the MSSQL data types
+therefore when doing a prepared statements you would need to add ``:type`` to **each prepared statement variable**.
+
+For example if you have a following SQL statement:
+
+```sql
+INSERT INTO 
+  Test2.dbo.Tweets 
+(Lang, "Text", id, CreatedAt, Username, ScreenName) 
+VALUES 
+(@lang, @text, @id, @created_at, @username, @screenname)
+```
+
+you should add ``:type`` to each ``@parameter`` so your SQL query will looks like this:
+
+```sql
+INSERT INTO 
+  Test2.dbo.Tweets 
+(Lang, "Text", id, CreatedAt, Username, ScreenName) 
+VALUES 
+(@lang:string, @text:string, @id:bigint, @created_at:date, @username:string, @screenname:string)
+```
+
+Following types are supported:
+
 
 ## Authentication
 

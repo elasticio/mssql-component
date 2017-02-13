@@ -13,6 +13,16 @@ Before you can deploy any code into elastic.io **you must be a registered elasti
 
 ## Getting Started
 
+### Authentication
+
+You may use following URI:
+
+```
+mssql://username:password@localhost:1433/database?encrypt=true
+```
+
+other types of configuration parameters are also supported, more infromation and samples you can find [here](https://www.npmjs.com/package/mssql#formats)
+
 ### SELECT Trigger and Action
 
 With this action you may fetch data out of the database, e.g. using ``SELECT`` statement. 
@@ -57,15 +67,7 @@ Following types are supported:
 
 more details can be found [here](https://github.com/elasticio/mssql-component/blob/master/lib/actions/insert.js#L25)
 
-## Authentication
-
-You may use following URI:
-
-```
-mssql://username:password@localhost:1433/database?encrypt=true
-```
-
-other types of configuration parameters are also supported, more infromation and samples you can find [here](https://www.npmjs.com/package/mssql#formats)
+After prepared statement is created and filled with parameters, query will be executed in scope of message body, so that ``msg.body.foo`` will be used to fill ``@foo`` parameter on prepared statement.
 
 ## Known issues
 

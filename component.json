@@ -35,11 +35,6 @@
           "viewClass": "TextAreaWithNoteView",
           "placeholder": "SELECT * FROM films WHERE title LIKE ${'%' + query + '%'}",
           "note": "You can use properties of message body as <i>${values}</i> in your query"
-        },
-        "batch": {
-          "label": "Bundle results in batches",
-          "required": false,
-          "viewClass": "CheckBoxView"
         }
       }
     }

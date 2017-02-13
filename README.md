@@ -19,28 +19,17 @@ Before you can deploy any code into elastic.io **you must be a registered elasti
 You may use following URI:
 
 ```
-mssql://username:password@localhost/INSTANCE/database?encrypt=true&domain=DOMAIN&driver=msnodesqlv8
+mssql://username:password@localhost:1433/database?encrypt=true
 ```
 
-more infromation and samples you can find [here](https://www.npmjs.com/package/mssql#formats)
+other types of configuration parameters are also supported, more infromation and samples you can find [here](https://www.npmjs.com/package/mssql#formats)
 
-
-## Configure OAuth Client key/secret
-
-In the component repository you need to specify OAuth Client credentials as environment variables. You would need two variables
-
- * ```XXX_KEY``` - your OAuth client key
- * ```XXX_SECRET``` - your OAUth client secret
- 
 ## Known issues
 
 No known issues are there yet.
 * For INSERT/UPDATE/DELETE action 
 ** Incoming message body should only contain simple types, e.g. ``body.foo`` or 
 ``body.bar`` nested obejct/values like ``body.foo.bar`` are not supported yet.
-** You have to make sure that all of your incoming messages have values referenced from the statement and they
-all have similar structure. For example if you have a query ``insert into foo (a,b,c) values (@a,@b,@c)`` then
-all incoming messages should at least have ``a``, ``b`` and ``c`` defined in the body 
 
 
 ## License

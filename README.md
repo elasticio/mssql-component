@@ -56,6 +56,12 @@ In the component repository you need to specify OAuth Client credentials as envi
 ## Known issues
 
 No known issues are there yet.
+* For INSERT/UPDATE/DELETE action 
+** Incoming message body should only contain simple types, e.g. ``body.foo`` or 
+``body.bar`` nested obejct/values like ``body.foo.bar`` are not supported yet.
+** You have to make sure that all of your incoming messages have values referenced from the statement and they
+all have similar structure. For example if you have a query ``insert into foo (a,b,c) values (@a,@b,@c)`` then
+all incoming messages should at least have ``a``, ``b`` and ``c`` defined in the body 
 
 
 ## License

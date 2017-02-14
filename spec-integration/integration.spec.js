@@ -6,7 +6,7 @@ const EventEmitter = require('events');
 
 class TestEmitter extends EventEmitter {
 
-  constructor() {
+  constructor(done) {
     super();
     this.data = [];
     this.end = 0;
@@ -14,11 +14,13 @@ class TestEmitter extends EventEmitter {
 
     this.on('data', (value) => this.data.push(value));
     this.on('error', (value) => this.error.push(value));
-    this.on('end', () => this.end++);
+    this.on('end', () => {
+      this.end++;
+      done();
+    });
   }
 
 }
-
 
 describe('Integration test', () => {
 
@@ -28,8 +30,6 @@ describe('Integration test', () => {
   });
 
   describe('for INSERT', () => {
-
-    let emitter;
 
     const cfg = {
       uri : process.env.MSSQL_URL,
@@ -59,10 +59,36 @@ describe('Integration test', () => {
         expect(result).deep.equal(msg);
         expect(emitter.data.length).to.equal(0);
         // promises, no need to emit end
-        expect(emitter.end.length).to.equal(0);
+        expect(emitter.end).to.equal(0);
+        // No error
         expect(emitter.error.length).to.equal(0);
       });
     });
-  })
+  });
+
+  describe('for SELECT', () => {
+
+    const cfg = {
+      uri : process.env.MSSQL_URL,
+      query: 'select * from Tweets ORDER BY id OFFSET 10 ROWS FETCH NEXT 10 ROWS ONLY;'
+    };
+
+    before(() => {
+      return select.init(cfg);
+    });
+
+    it('should insert data', (done) => {
+      const emitter = new TestEmitter(() => {
+        expect(emitter.error.length).to.equal(0);
+        expect(emitter.data.length).to.equal(10);
+        expect(emitter.end).to.equal(1);
+        done();
+      });
+      const msg = {
+        body: {}
+      };
+      select.process.call(emitter, msg, cfg).catch(err => done(err));
+    });
+  });
 
 });

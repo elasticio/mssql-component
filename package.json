@@ -33,7 +33,8 @@
   },
   "scripts": {
     "pretest": "node_modules/.bin/eslint lib spec --ext .json --ext .js --fix",
-    "test": "NODE_ENV=test mocha spec/*"
+    "test": "NODE_ENV=test mocha spec/*",
+    "integration-test": "NODE_ENV=test mocha spec-integration/*"
   },
   "devDependencies": {
     "chai": "^3.5.0",

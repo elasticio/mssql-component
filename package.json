@@ -32,15 +32,15 @@
     "request-promise": "^4.1.1"
   },
   "scripts": {
-    "pretest": "node_modules/.bin/eslint lib spec Gruntfile.js --ext .json --ext .js --fix",
-    "test": "NODE_ENV=test grunt"
+    "pretest": "node_modules/.bin/eslint lib spec --ext .json --ext .js --fix",
+    "test": "NODE_ENV=test mocha spec/*"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "eslint": "^3.1.1",
     "eslint-config-xo-space": "^0.15.0",
     "eslint-plugin-json": "^1.2.0",
-    "grunt": "^1.0.1",
-    "grunt-jasmine-node": "^0.3.1"
+    "mocha": "^3.2.0"
   },
   "eslintConfig": {
     "extends": "xo-space",

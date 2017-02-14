@@ -23,7 +23,8 @@
           "placeholder": "INSERT INTO films (code,title,kind) VALUES (@code:number,@title:string,@kind:string)",
           "note": "You can use parameters of message body as <i>@value:number</i> and type is <i>:type</i>"
         }
-      }
+      },
+      "dynamicMetadata": true
     },
     "selectAction": {
       "title": "SELECT",
@@ -51,11 +52,6 @@
           "viewClass": "TextAreaWithNoteView",
           "placeholder": "SELECT * FROM films WHERE title LIKE ${'%' + query + '%'}",
           "note": "You can use properties of message body as <i>${values}</i> in your insert or update or delete"
-        },
-        "batch": {
-          "label": "Bundle results in batches",
-          "required": false,
-          "viewClass": "CheckBoxView"
         }
       }
     }

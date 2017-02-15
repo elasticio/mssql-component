@@ -67,15 +67,16 @@ Following types are supported:
 
 more details can be found [here](https://github.com/elasticio/mssql-component/blob/master/lib/actions/insert.js#L25)
 
-After prepared statement is created and filled with parameters, query will be executed in scope of message body, so that ``msg.body.foo`` will be used to fill ``@foo`` parameter on prepared statement.
+Component supports dynamic incomig metadata - as soon as your query is in place it will be parsed and incoming metadata will be generated accordingly.
 
 ## Known issues
 
 No known issues are there yet.
-* For INSERT/UPDATE/DELETE action 
-** Incoming message body should only contain simple types, e.g. ``body.foo`` or 
-``body.bar`` nested obejct/values like ``body.foo.bar`` are not supported yet.
 
+## TODOs
+ * Support for templating in SELECT query
+ * Support for BULK upload
+ * Support for binary attachments
 
 ## License
 

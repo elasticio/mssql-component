@@ -92,5 +92,52 @@ describe('Metadata test', () => {
         });
     });
 
+    it('should assume default metadata as stirng', (done) => {
+        insert.getMetaModel({
+            query: 'INSERT INTO Test2.dbo.Tweets '
+            + '(Lang, Retweeted, Favorited, "Text", id, CreatedAt, Username, ScreenName) '
+            + 'VALUES (@lang, @retweeted:float, @money:money, @favorited:boolean, '
+            + '@text, @id:bigint, @created_at:date, @username, @screenname)'
+        }, (err, result) => {
+            expect(err).to.be.null;
+            expect(result).to.deep.equal({
+                in: {
+                    properties: {
+                        created_at: {
+                            type: 'string'
+                        },
+                        favorited: {
+                            type: 'string'
+                        },
+                        id: {
+                            type: 'number'
+                        },
+                        lang: {
+                            type: 'string'
+                        },
+                        money: {
+                            type: 'number'
+                        },
+                        retweeted: {
+                            type: 'number'
+                        },
+                        screenname: {
+                            type: 'string'
+                        },
+                        text: {
+                            type: 'string'
+                        },
+                        username: {
+                            type: 'string'
+                        }
+                    },
+                    type: 'object'
+                },
+                out: {}
+            }
+            );
+            done();
+        });
+    });
 
 });

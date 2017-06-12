@@ -5,7 +5,7 @@ const insert = require('../lib/actions/insert');
 describe('Metadata test', () => {
     const cfg = {
         query: 'INSERT INTO Test2.dbo.Tweets (Lang, Retweeted, Favorited, "Text", id, CreatedAt, Username, ScreenName) '
-        + 'VALUES (@lang:string, @retweeted:boolean, @favorited:boolean, '
+        + 'VALUES (@lang:string, @retweeted:float, @money:money, @favorited:boolean, '
         + '@text:string, @id:bigint, @created_at:date, @username:string, @screenname:string)'
     };
 
@@ -28,8 +28,11 @@ describe('Metadata test', () => {
                         lang: {
                             type: 'string'
                         },
+                        money: {
+                            type: 'number'
+                        },
                         retweeted: {
-                            type: 'string'
+                            type: 'number'
                         },
                         screenname: {
                             type: 'string'

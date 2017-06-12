@@ -34,7 +34,7 @@ describe('Integration test', () => {
     const cfg = {
       uri : process.env.MSSQL_URL,
       query: 'INSERT INTO Test2.dbo.Tweets (Lang, Retweeted, Favorited, "Text", id, CreatedAt, Username, ScreenName) '
-      + 'VALUES (@lang:string, @retweeted:boolean, @favorited:boolean, @text:string, @id:bigint, @created_at:date, @username:string, @screenname:string)'
+      + 'VALUES (@lang, @retweeted:boolean, @favorited:boolean, @text:string, @id:bigint, @created_at:date, @username, @screenname:string)'
     };
 
     before(() => {

@@ -55,11 +55,11 @@ INSERT INTO
   Test2.dbo.Tweets 
 (Lang, "Text", id, CreatedAt, Username, ScreenName) 
 VALUES 
-(@lang:string, @text:string, @id:bigint, @created_at:date, @username:string, @screenname:string)
+(@lang, @text, @id:bigint, @created_at:date, @username, @screenname)
 ```
 
 Following types are supported:
- * ``string``
+ * ``string`` (also default type if type is omitted)
  * ``number`` (will be converted to MSSQL ``int``)
  * ``bigint``
  * ``boolean`` (will be converted to MSSQL ``bit``)

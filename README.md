@@ -29,6 +29,14 @@ With this action you may fetch data out of the database, e.g. using ``SELECT`` s
 This trigger & action has no limitations on the number of rows so you may expect to get all of these
 via sequential fetching that is implemented within the node.js ``mssql`` driver.
 
+#### Polling
+
+Comopnent will remember last execution timestamp and let you build queries on it:
+
+```sql
+select * from Leads where Created >= '%%EIO_LAST_POLL%%'
+```
+
 ### INSERT/DELETE/UPDATE Action
 
 ![image](https://cloud.githubusercontent.com/assets/56208/22904204/cef8cb06-f23b-11e6-998f-3fe65ab81540.png)

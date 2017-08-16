@@ -13,7 +13,10 @@ class TestEmitter extends EventEmitter {
     this.error = [];
 
     this.on('data', (value) => this.data.push(value));
-    this.on('error', (value) => this.error.push(value));
+    this.on('error', (value) => {
+        this.error.push(value)
+        console.error(value.stack || value);
+    });
     this.on('end', () => {
       this.end++;
       done();
@@ -77,7 +80,7 @@ describe('Integration test', () => {
       return select.init(cfg);
     });
 
-    it('should insert data', (done) => {
+    it('should select data', (done) => {
       const emitter = new TestEmitter(() => {
         expect(emitter.error.length).to.equal(0);
         expect(emitter.data.length).to.equal(10);
@@ -90,5 +93,29 @@ describe('Integration test', () => {
       select.process.call(emitter, msg, cfg).catch(err => done(err));
     });
   });
+
+  describe('for polling SELECT', () => {
+
+        const cfg = {
+            uri : process.env.MSSQL_URL,
+            query: "select * from Leads where Created >= '%%EIO_LAST_POLL%%'"
+        };
+
+        before(() => {
+            return select.init(cfg);
+        });
+
+        it('should insert data', (done) => {
+            const emitter = new TestEmitter(() => {
+                expect(emitter.error.length).to.equal(0);
+                expect(emitter.end).to.equal(1);
+                done();
+            });
+            const msg = {
+                body: {}
+            };
+            select.process.call(emitter, msg, cfg).catch(err => done(err));
+        });
+    });
 
 });

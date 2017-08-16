@@ -14,6 +14,7 @@
   "actions": {
     "insert": {
       "title": "INSERT/UPDATE/DELETE",
+      "description": "Executes a single SQL statement that causes database data update and returns a number of affected records, like INSERT, UPDATE or DELETE",
       "main": "./lib/actions/insert.js",
       "fields": {
         "query": {
@@ -28,6 +29,7 @@
     },
     "selectAction": {
       "title": "SELECT",
+      "description": "Executes a SELECT statement that fetches potentially multiple database rows from the database",
       "main": "./lib/actions/select.js",
       "fields": {
         "query": {
@@ -43,6 +45,7 @@
   "triggers": {
     "selectTrigger": {
       "title": "SELECT",
+      "description": "Executes a SELECT statement that fetches potentially multiple database rows from the database",
       "main": "./lib/actions/select.js",
       "type": "polling",
       "fields": {

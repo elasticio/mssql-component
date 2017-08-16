@@ -114,7 +114,7 @@ describe('Integration test', () => {
             const msg = {
                 body: {}
             };
-            select.process.call(emitter, msg, cfg).catch(err => done(err));
+            select.process.call(emitter, msg, cfg, {}).catch(err => done(err));
         });
     });
 

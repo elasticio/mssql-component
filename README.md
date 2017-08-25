@@ -86,8 +86,8 @@ Component supports dynamic incomig metadata - as soon as your query is in place 
 No known issues are there yet.
 
 ## TODOs
- * Support for templating in SELECT query
  * Support for BULK upload
+ * Support for DELETE and UPDATE statements
  * Support for binary attachments
 
 ## License

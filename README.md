@@ -25,6 +25,9 @@ other types of configuration parameters are also supported, more infromation and
 ### SELECT Trigger and Action
 
 With this action you may fetch data out of the database, e.g. using ``SELECT`` statement. 
+
+![image](https://user-images.githubusercontent.com/56208/29715706-b4930bdc-89a8-11e7-8a0d-969959d26dd6.png)
+
 This trigger & action has no limitations on the number of rows so you may expect to get all of these
 via sequential fetching that is implemented within the node.js ``mssql`` driver.
 

@@ -31,15 +31,6 @@
       "title": "SELECT",
       "description": "Executes a SELECT statement that fetches potentially multiple database rows from the database",
       "main": "./lib/actions/select.js",
-      "fields": {
-        "query": {
-          "label": "SQL Query",
-          "required": true,
-          "viewClass": "TextAreaWithNoteView",
-          "placeholder": "SELECT * FROM films WHERE title LIKE ${'%' + query + '%'}",
-          "note": "You can use properties of message body as <i>${values}</i> in your query"
-        }
-      },
       "metadata": {
         "in": {
           "query": {

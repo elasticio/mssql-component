@@ -4,8 +4,7 @@
 # mssql-component
 MSSQL Component component for the [elastic.io platform](http://www.elastic.io &#34;elastic.io platform&#34;)
 
-![image](https://cloud.githubusercontent.com/assets/56208/22904377/89b611c4-f23c-11e6-8b5d-783d62cf5caf.png)
-
+![image](https://user-images.githubusercontent.com/56208/29715706-b4930bdc-89a8-11e7-8a0d-969959d26dd6.png)
 
 ## Before you Begin
 
@@ -39,7 +38,7 @@ select * from Leads where Created >= '%%EIO_LAST_POLL%%'
 
 ### INSERT/DELETE/UPDATE Action
 
-![image](https://cloud.githubusercontent.com/assets/56208/22904204/cef8cb06-f23b-11e6-998f-3fe65ab81540.png)
+![image](https://user-images.githubusercontent.com/56208/29715914-9c369ee0-89a9-11e7-89cb-a559f4a8861f.png)
 
 You may use this action to do the operations that are not producing output rows but do the database manipulations, 
 e.g. ``INSERT``, ``UPDATE`` or ``DELETE`` statements. Internally we use prepared statements, so all incoming data is

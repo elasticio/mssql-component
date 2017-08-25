@@ -39,6 +39,14 @@
           "placeholder": "SELECT * FROM films WHERE title LIKE ${'%' + query + '%'}",
           "note": "You can use properties of message body as <i>${values}</i> in your query"
         }
+      },
+      "metadata": {
+        "in": {
+          "query": {
+            "type": "String",
+            "title": "SQL Query"
+          }
+        }
       }
     }
   },

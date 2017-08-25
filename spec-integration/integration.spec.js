@@ -88,7 +88,9 @@ describe('Integration test', () => {
         done();
       });
       const msg = {
-        body: {}
+        body: {
+            lang: 'en'
+        }
       };
       select.process.call(emitter, msg, cfg).catch(err => done(err));
     });

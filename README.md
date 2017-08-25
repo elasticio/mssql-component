@@ -37,6 +37,8 @@ Comopnent will remember last execution timestamp and let you build queries on it
 select * from Leads where Created >= '%%EIO_LAST_POLL%%'
 ```
 
+where just before executing the statement the ``%%EIO_LAST_POLL%%`` will be replaced with ISO Date of the last execution, for example ``2017-08-25T07:43:48.127Z``. During the first execution, date will be equal to [the bigging of time](http://www.onthisday.com/date/1970/january/1) - ``1970-01-01T00:00:00.000Z``.
+
 ### INSERT/DELETE/UPDATE Action
 
 ![image](https://cloud.githubusercontent.com/assets/56208/22904204/cef8cb06-f23b-11e6-998f-3fe65ab81540.png)

@@ -2,7 +2,7 @@
 > elastic.io integration component for Microsoft SQL Server
 
 # mssql-component
-MSSQL Component component for the [elastic.io platform](http://www.elastic.io &#34;elastic.io platform&#34;)
+MSSQL Component component for the [elastic.io platform](http://www.elastic.io)
 
 ![image](https://user-images.githubusercontent.com/56208/29715706-b4930bdc-89a8-11e7-8a0d-969959d26dd6.png)
 

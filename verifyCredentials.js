@@ -8,9 +8,9 @@ module.exports = function verifyCredentials(credentials, cb) {
   co(function*() {
     console.log('Connecting to the database');
     var uri = 'mssql://'
-      + credentials.username
+      + encodeURIComponent(credentials.username)
       + ':'
-      + credentials.password
+      + encodeURIComponent(credentials.password)
       + '@'
       + credentials.server
       + ((credentials.port) ? ':' + credentials.port : '')

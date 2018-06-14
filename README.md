@@ -14,11 +14,9 @@ Before you can deploy any code into elastic.io **you must be a registered elasti
 
 ### Authentication
 
-You may use following URI:
+You may use following properties to configure a connection:
 
-```
-mssql://username:password@localhost:1433/database?encrypt=true
-```
+![image](https://user-images.githubusercontent.com/40201204/41356042-97e26406-6f2b-11e8-88fb-11cba846d143.png)
 
 other types of configuration parameters are also supported, more infromation and samples you can find [here](https://www.npmjs.com/package/mssql#formats)
 
@@ -33,7 +31,7 @@ via sequential fetching that is implemented within the node.js ``mssql`` driver.
 
 #### Polling
 
-Comopnent will remember last execution timestamp and let you build queries on it:
+Component will remember last execution timestamp and let you build queries on it:
 
 ```sql
 select * from Leads where Created >= '%%EIO_LAST_POLL%%'

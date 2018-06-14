@@ -25,11 +25,11 @@
     "bluebird": "^3.4.6",
     "co": "^4.6.0",
     "co-mssql": "^1.3.0",
-    "elasticio-node": "0.0.8",
-    "elasticio-sailor-nodejs": "2.2.0",
-    "mssql": "^3.3.0",
-    "request": "^2.75.0",
-    "request-promise": "^4.1.1"
+    "elasticio-node": "0.0.9",
+    "elasticio-sailor-nodejs": "^2.2.1",
+    "mssql": "^4.1.0",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2"
   },
   "engines": {
     "node": "8.1.3"
@@ -40,12 +40,12 @@
     "integration-test": "NODE_ENV=test mocha spec-integration/*"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "eslint": "^3.1.1",
-    "eslint-config-xo-space": "^0.15.0",
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "eslint-config-xo-space": "^0.18.0",
     "eslint-plugin-json": "^1.2.0",
-    "eslint-plugin-mocha": "^4.8.0",
-    "mocha": "^3.2.0"
+    "eslint-plugin-mocha": "^5.0.0",
+    "mocha": "^5.2.0"
   },
   "eslintConfig": {
     "extends": "xo-space",

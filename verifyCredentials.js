@@ -7,7 +7,19 @@ module.exports = function verifyCredentials(credentials, cb) {
   console.log('Credentials passed for verification %j', credentials);
   co(function*() {
     console.log('Connecting to the database');
-    var connection = new sql.Connection(credentials.uri);
+    var uri = 'mssql://'
+      + credentials.username
+      + ':'
+      + credentials.password
+      + '@'
+      + credentials.server
+      + ((credentials.port) ? ':' + credentials.port : '')
+      + ((credentials.instance) ? '/' + credentials.instance : '')
+      + '/'
+      + credentials.database
+      + ((credentials.domain) ? '?domain=' + credentials.domain + '&encrypt=' + credentials.encrypt
+                              : '?encrypt=' + credentials.encrypt);
+    var connection = new sql.Connection(uri);
     yield connection.connect();
     console.log('Verification completed successfully');
     yield connection.close();

@@ -48,7 +48,7 @@ describe('Metadata test', () => {
                 },
                 out: {}
             }
-      );
+            );
             done();
         });
     });
@@ -63,7 +63,7 @@ describe('Metadata test', () => {
                 },
                 out: {}
             }
-      );
+            );
             done();
         });
     });
@@ -87,7 +87,7 @@ describe('Metadata test', () => {
                 },
                 out: {}
             }
-      );
+            );
             done();
         });
     });

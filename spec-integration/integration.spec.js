@@ -28,15 +28,24 @@ class TestEmitter extends EventEmitter {
 
 describe('Integration test', () => {
 
-
     before(() => {
-        if (!process.env.MSSQL_URL) {throw new Error('Please set MSSQL_URL env variable to proceed');}
+        if (!process.env.MSSQL_USERNAME) {throw new Error('Please set MSSQL_USERNAME env variable to proceed');}
+        if (!process.env.MSSQL_PASSWORD) {throw new Error('Please set MSSQL_PASSWORD env variable to proceed');}
+        if (!process.env.MSSQL_SERVER) {throw new Error('Please set MSSQL_SERVER env variable to proceed');}
+        if (!process.env.MSSQL_DATABASE) {throw new Error('Please set MSSQL_DATABASE env variable to proceed');}
     });
 
     describe('for INSERT', () => {
 
         const cfg = {
-            uri: process.env.MSSQL_URL,
+            username: process.env.MSSQL_USERNAME,
+            password: process.env.MSSQL_PASSWORD,
+            server: process.env.MSSQL_SERVER,
+            port: process.env.MSSQL_PORT,
+            instance: process.env.MSSQL_INSTANCE,
+            database: process.env.MSSQL_DATABASE,
+            domain: process.env.MSSQL_DOMAIN,
+            encrypt: process.env.MSSQL_ENCRYPT,
             query: 'INSERT INTO Test2.dbo.Tweets (Lang, Retweeted, Favorited, "Text", id, '
             + 'CreatedAt, Username, ScreenName) '
             + 'VALUES (@lang, @retweeted:boolean, @favorited:boolean, @text:string, @id:bigint, '
@@ -73,7 +82,14 @@ describe('Integration test', () => {
     describe('for SELECT', () => {
 
         const cfg = {
-            uri: process.env.MSSQL_URL
+            username: process.env.MSSQL_USERNAME,
+            password: process.env.MSSQL_PASSWORD,
+            server: process.env.MSSQL_SERVER,
+            port: process.env.MSSQL_PORT,
+            instance: process.env.MSSQL_INSTANCE,
+            database: process.env.MSSQL_DATABASE,
+            domain: process.env.MSSQL_DOMAIN,
+            encrypt: process.env.MSSQL_ENCRYPT
         };
 
         before(() => select.init(cfg));
@@ -86,7 +102,7 @@ describe('Integration test', () => {
                 done();
             });
             const msg = messages.newMessageWithBody({
-                query: 'select * from Tweets ORDER BY id OFFSET 10 ROWS FETCH NEXT 10 ROWS ONLY;'
+                query: 'select * from Test2.dbo.Tweets ORDER BY id OFFSET 10 ROWS FETCH NEXT 10 ROWS ONLY;'
             });
             select.process.call(emitter, msg, cfg).catch(err => done(err));
         });
@@ -95,8 +111,15 @@ describe('Integration test', () => {
     describe('for legacy SELECT configuration', () => {
 
         const cfg = {
-            uri: process.env.MSSQL_URL,
-            query: 'select * from Tweets ORDER BY id OFFSET 10 ROWS FETCH NEXT 10 ROWS ONLY;'
+            username: process.env.MSSQL_USERNAME,
+            password: process.env.MSSQL_PASSWORD,
+            server: process.env.MSSQL_SERVER,
+            port: process.env.MSSQL_PORT,
+            instance: process.env.MSSQL_INSTANCE,
+            database: process.env.MSSQL_DATABASE,
+            domain: process.env.MSSQL_DOMAIN,
+            encrypt: process.env.MSSQL_ENCRYPT,
+            query: 'select * from Test2.dbo.Tweets ORDER BY id OFFSET 10 ROWS FETCH NEXT 10 ROWS ONLY;'
         };
 
         before(() => select.init(cfg));
@@ -117,7 +140,14 @@ describe('Integration test', () => {
     describe('for polling SELECT', () => {
 
         const cfg = {
-            uri: process.env.MSSQL_URL
+            username: process.env.MSSQL_USERNAME,
+            password: process.env.MSSQL_PASSWORD,
+            server: process.env.MSSQL_SERVER,
+            port: process.env.MSSQL_PORT,
+            instance: process.env.MSSQL_INSTANCE,
+            database: process.env.MSSQL_DATABASE,
+            domain: process.env.MSSQL_DOMAIN,
+            encrypt: process.env.MSSQL_ENCRYPT
         };
 
         before(() => select.init(cfg));

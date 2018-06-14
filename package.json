@@ -37,7 +37,7 @@
   "scripts": {
     "pretest": "node_modules/.bin/eslint lib spec spec-integration --ext .json --ext .js --fix",
     "test": "NODE_ENV=test mocha spec/*",
-    "integration-test": "NODE_ENV=test mocha spec-integration/*"
+    "integration-test": "NODE_ENV=test mocha spec-integration/* --exit"
   },
   "devDependencies": {
     "chai": "^4.1.2",

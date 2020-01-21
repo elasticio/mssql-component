@@ -52,7 +52,6 @@ describe('Integration test', () => {
             + 'VALUES (@lang, @retweeted:boolean, @favorited:boolean, @text:string, @id:bigint, '
             + '@created_at:date, @username, @screenname:string)'
         };
-
         before(() => insert.init(cfg));
 
         it('should insert data', () => {
@@ -70,7 +69,7 @@ describe('Integration test', () => {
                 }
             };
             return insert.process.call({
-                emitter,
+                emit: emitter.emit,
                 logger
             }, msg).then((result) => {
                 expect(result).deep.equal(msg);
@@ -109,7 +108,7 @@ describe('Integration test', () => {
                 query: 'select * from Test2.dbo.Tweets ORDER BY id OFFSET 10 ROWS FETCH NEXT 10 ROWS ONLY;'
             });
             select.process.call({
-                emitter,
+                emit: emitter.emit,
                 logger
             }, msg, cfg).catch(err => done(err));
         });
@@ -140,7 +139,7 @@ describe('Integration test', () => {
             });
             const msg = messages.newMessageWithBody({});
             select.process.call({
-                emitter,
+                emit: emitter.emit,
                 logger
             }, msg, cfg).catch(err => done(err));
         });
@@ -174,7 +173,7 @@ describe('Integration test', () => {
                 }
             };
             select.process.call({
-                emitter,
+                emit: emitter.emit,
                 logger
             }, msg, cfg, {}).catch(err => done(err));
         });

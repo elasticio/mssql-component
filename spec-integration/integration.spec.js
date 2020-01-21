@@ -70,7 +70,7 @@ describe('Integration test', () => {
                 }
             };
             return insert.process.call({
-                emit: emitter,
+                emitter,
                 logger
             }, msg).then((result) => {
                 expect(result).deep.equal(msg);
@@ -109,7 +109,7 @@ describe('Integration test', () => {
                 query: 'select * from Test2.dbo.Tweets ORDER BY id OFFSET 10 ROWS FETCH NEXT 10 ROWS ONLY;'
             });
             select.process.call({
-                emit: emitter,
+                emitter,
                 logger
             }, msg, cfg).catch(err => done(err));
         });
@@ -140,7 +140,7 @@ describe('Integration test', () => {
             });
             const msg = messages.newMessageWithBody({});
             select.process.call({
-                emit: emitter,
+                emitter,
                 logger
             }, msg, cfg).catch(err => done(err));
         });
@@ -174,7 +174,7 @@ describe('Integration test', () => {
                 }
             };
             select.process.call({
-                emit: emitter,
+                emitter,
                 logger
             }, msg, cfg, {}).catch(err => done(err));
         });

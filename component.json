@@ -1,6 +1,7 @@
 {
   "title": "SQL Server",
   "description": "elastic.io integration component for Microsoft SQL Server",
+  "buildType": "docker",
   "credentials": {
     "fields": {
       "server": {

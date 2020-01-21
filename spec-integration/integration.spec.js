@@ -4,6 +4,7 @@ const insert = require('../lib/actions/insert');
 const select = require('../lib/actions/select');
 const { messages } = require('elasticio-node');
 const EventEmitter = require('events');
+const logger = require('@elastic.io/component-logger')();
 
 class TestEmitter extends EventEmitter {
 
@@ -68,7 +69,10 @@ describe('Integration test', () => {
                     screenname: 'zubairov'
                 }
             };
-            return insert.process.call(emitter, msg).then((result) => {
+            return insert.process.call({
+                emit: emitter,
+                logger
+            }, msg).then((result) => {
                 expect(result).deep.equal(msg);
                 expect(emitter.data.length).to.equal(0);
                 // promises, no need to emit end
@@ -104,7 +108,10 @@ describe('Integration test', () => {
             const msg = messages.newMessageWithBody({
                 query: 'select * from Test2.dbo.Tweets ORDER BY id OFFSET 10 ROWS FETCH NEXT 10 ROWS ONLY;'
             });
-            select.process.call(emitter, msg, cfg).catch(err => done(err));
+            select.process.call({
+                emit: emitter,
+                logger
+            }, msg, cfg).catch(err => done(err));
         });
     });
 
@@ -132,7 +139,10 @@ describe('Integration test', () => {
                 done();
             });
             const msg = messages.newMessageWithBody({});
-            select.process.call(emitter, msg, cfg).catch(err => done(err));
+            select.process.call({
+                emit: emitter,
+                logger
+            }, msg, cfg).catch(err => done(err));
         });
     });
 
@@ -163,7 +173,10 @@ describe('Integration test', () => {
                     query: 'select * from Leads where Created >= \'%%EIO_LAST_POLL%%\''
                 }
             };
-            select.process.call(emitter, msg, cfg, {}).catch(err => done(err));
+            select.process.call({
+                emit: emitter,
+                logger
+            }, msg, cfg, {}).catch(err => done(err));
         });
     });
 

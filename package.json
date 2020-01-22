@@ -46,7 +46,8 @@
     "eslint-config-xo-space": "0.18.0",
     "eslint-plugin-json": "1.2.0",
     "eslint-plugin-mocha": "5.0.0",
-    "mocha": "5.2.0"
+    "mocha": "5.2.0",
+    "sinon": "8.1.1"
   },
   "eslintConfig": {
     "extends": "xo-space",

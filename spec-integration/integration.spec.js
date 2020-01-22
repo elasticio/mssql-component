@@ -2,7 +2,6 @@ const expect = require('chai').expect;
 const insert = require('../lib/actions/insert');
 const select = require('../lib/actions/select');
 const { messages } = require('elasticio-node');
-const EventEmitter = require('events');
 const sinon = require('sinon');
 const logger = require('@elastic.io/component-logger')();
 
@@ -13,6 +12,7 @@ describe('Integration test', () => {
         if (!process.env.MSSQL_PASSWORD) {throw new Error('Please set MSSQL_PASSWORD env variable to proceed');}
         if (!process.env.MSSQL_SERVER) {throw new Error('Please set MSSQL_SERVER env variable to proceed');}
         if (!process.env.MSSQL_DATABASE) {throw new Error('Please set MSSQL_DATABASE env variable to proceed');}
+
     });
     after(() => {
         process.exit();

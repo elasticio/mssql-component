@@ -6,6 +6,9 @@ MSSQL Component component for the [elastic.io platform](http://www.elastic.io)
 
 ![image](https://user-images.githubusercontent.com/56208/29715706-b4930bdc-89a8-11e7-8a0d-969959d26dd6.png)
 
+## Environment Variables
+1. LOG_LEVEL - controls verbosity of logger. Possible values: `trace`, `debug` `info`, `warn`, `error`. Default: `info`
+
 ## Before you Begin
 
 Before you can deploy any code into elastic.io **you must be a registered elastic.io platform user**. Please see our home page at [http://www.elastic.io](http://www.elastic.io) to learn how. 

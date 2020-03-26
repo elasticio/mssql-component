@@ -5,67 +5,96 @@
   "credentials": {
     "fields": {
       "server": {
-        "label": "Server (you can use 'host\\\\instance' to connect to named instance)",
+        "label": "Server",
         "required": true,
         "viewClass": "TextFieldView",
-        "placeholder": "localhost"
+        "placeholder": "localhost",
+        "help": {
+          "description": "Server to connect to. You can use 'host\\\\instance' to connect to named instance."
+        }
       },
       "port": {
-        "label": "Port (don't set when connecting to named instance)",
+        "label": "Port",
         "required": false,
         "viewClass": "TextFieldView",
-        "placeholder": "1433"
+        "placeholder": "1433",
+        "help": {
+          "description": "Port to connect to. If not provided default port 1433 is used. Don't set when connecting to named instance."
+        }
       },
       "database": {
         "label": "Database Name",
         "required": true,
         "viewClass": "TextFieldView",
-        "placeholder": "database"
+        "placeholder": "database",
+        "help": {
+          "description": "Database to connect to. Default is dependent on server configuration."
+        }
       },
       "encrypt": {
-        "label": "Encrypt (check this option if you're using Windows Azure)",
-        "viewClass": "CheckBoxView"
+        "label": "Encrypt",
+        "viewClass": "CheckBoxView",
+        "help": {
+          "description": "Enable this option if you're using Windows Azure"
+        }
       },
       "domain": {
-        "label": "Domain (driver will connect to SQL Server using domain login)",
+        "label": "Domain",
         "required": false,
         "viewClass": "TextFieldView",
-        "placeholder": "domain"
+        "placeholder": "domain",
+        "help": {
+          "description": "If domain is provided, the connection to SQL Server will be done using domain login."
+        }
       },
       "username": {
         "label": "Username",
         "required": true,
         "viewClass": "TextFieldView",
-        "placeholder": "username"
+        "placeholder": "username",
+        "help": {
+          "description": "User name to use for authentication with the database."
+        }
       },
       "password": {
         "label": "Password",
         "required": true,
         "viewClass": "PasswordFieldView",
-        "placeholder": "password"
+        "placeholder": "password",
+        "help": {
+          "description": "Password to use for authentication with the database."
+        }
       }
     }
   },
   "actions": {
     "insert": {
       "title": "INSERT/UPDATE/DELETE",
-      "description": "Executes a single SQL statement that causes database data update and returns a number of affected records, like INSERT, UPDATE or DELETE",
       "main": "./lib/actions/insert.js",
+      "help": {
+        "description": "Executes a single SQL statement that causes database data update and returns a number of affected records, like INSERT, UPDATE or DELETE",
+        "link": "/components/mssql/index.html#insertdeleteupdate-action"
+      },
       "fields": {
         "query": {
           "label": "SQL Query",
           "required": true,
           "viewClass": "TextAreaWithNoteView",
           "placeholder": "INSERT INTO films (code,title,kind) VALUES (@code:number,@title:string,@kind:string)",
-          "note": "You can use parameters of message body as <i>@value:number</i> and type is <i>:type</i>"
+          "help": {
+            "description": "SQL query to execute. You can use parameters of message body as <i>@value:number</i> and type is <i>:type</i>"
+          }
         }
       },
       "dynamicMetadata": true
     },
     "selectAction": {
       "title": "SELECT",
-      "description": "Executes a SELECT statement that fetches potentially multiple database rows from the database",
       "main": "./lib/actions/select.js",
+      "help": {
+        "description": "Executes a SELECT statement that fetches potentially multiple database rows from the database",
+        "link": "/components/mssql/index.html#select-action"
+      },
       "metadata": {
         "in": {
           "type": "object",
@@ -73,7 +102,8 @@
             "query": {
               "type": "string",
               "title": "SQL Query",
-              "required": true
+              "required": true,
+              "description": "SQL query to execute."
             }
           }
         }
@@ -83,16 +113,21 @@
   "triggers": {
     "selectTrigger": {
       "title": "SELECT",
-      "description": "Executes a SELECT statement that fetches potentially multiple database rows from the database",
       "main": "./lib/actions/select.js",
       "type": "polling",
+      "help": {
+        "description": "Executes a SELECT statement that fetches potentially multiple database rows from the database",
+        "link": "/components/mssql/index.html#select-trigger-and-action"
+      },
       "fields": {
         "query": {
           "label": "SQL Query",
           "required": true,
           "viewClass": "TextAreaWithNoteView",
           "placeholder": "INSERT INTO films (code,title,kind) VALUES (@code:number,@title:string,@kind:string)",
-          "note": "You can use parameters of message body as <i>@value:number</i> and type is <i>:type</i>"
+          "help": {
+            "description": "SQL query to execute. You can use parameters of message body as <i>@value:number</i> and type is <i>:type</i>"
+          }
         }
       },
       "metadata": {

@@ -1,12 +1,16 @@
+const fs = require('fs');
 const { expect } = require('chai');
 const { messages } = require('elasticio-node');
 const sinon = require('sinon');
 const logger = require('@elastic.io/component-logger')();
 const insert = require('../lib/actions/insert');
 const select = require('../lib/actions/select');
-require('dotenv').config();
 
 describe('Integration test', () => {
+  if (fs.existsSync('.env')) {
+    // eslint-disable-next-line global-require
+    require('dotenv').config();
+  }
   before(() => {
     if (!process.env.MSSQL_USERNAME) { throw new Error('Please set MSSQL_USERNAME env variable to proceed'); }
     if (!process.env.MSSQL_PASSWORD) { throw new Error('Please set MSSQL_PASSWORD env variable to proceed'); }

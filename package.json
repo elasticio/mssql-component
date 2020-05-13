@@ -22,7 +22,7 @@
     "elasticio-component"
   ],
   "engines": {
-    "node": ">=12"
+    "node": ">=12.13.0"
   },
   "scripts": {
     "pretest": "node_modules/.bin/eslint lib spec spec-integration --ext .json --ext .js --fix",

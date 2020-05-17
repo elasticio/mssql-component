@@ -13,16 +13,7 @@
           "description": "Server to connect. You can use 'host\\\\instance' to connect to named instance."
         }
       },
-      "port": {
-        "label": "Port",
-        "required": false,
-        "viewClass": "TextFieldView",
-        "placeholder": "1433",
-        "help": {
-          "description": "Port to connect. If not provided default port 1433 is used. Don't set when connecting to named instance."
-        }
-      },
-      "database": {
+        "database": {
         "label": "Database Name",
         "required": true,
         "viewClass": "TextFieldView",
@@ -47,6 +38,15 @@
         "placeholder": "password",
         "help": {
           "description": "Password to use for authentication with the database."
+        }
+      },
+      "port": {
+        "label": "Port",
+        "required": false,
+        "viewClass": "TextFieldView",
+        "placeholder": "1433",
+        "help": {
+          "description": "Port to connect. If not provided default port 1433 is used. Don't set when connecting to named instance."
         }
       },
       "domain": {

@@ -48,7 +48,7 @@ where just before executing the statement the ``%%EIO_LAST_POLL%%`` will be repl
 
 You may use this action to do the operations that are not producing output rows but do the database manipulations, 
 e.g. ``INSERT``, ``UPDATE`` or ``DELETE`` statements. Internally we use prepared statements, so all incoming data is
-validated against SQL injetion, however we had to build a connection from JavaSscript types to the MSSQL data types
+validated against SQL injetion, however we had to build a connection from JavaScript types to the MSSQL data types
 therefore when doing a prepared statements you would need to add ``:type`` to **each prepared statement variable**.
 
 For example if you have a following SQL statement:

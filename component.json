@@ -80,9 +80,9 @@
           "label": "SQL Query",
           "required": true,
           "viewClass": "TextAreaWithNoteView",
-          "placeholder": "SELECT * FROM Employee WHERE EmpID = 322",
+          "placeholder": "INSERT INTO films (code,title,kind) VALUES (@code:number,@title:string,@kind:string)",
           "help": {
-            "description": "SQL SELECT Statement to execute"
+            "description": "SQL query to execute. You can use parameters of message body as '@value:number' and type is ':type'"
           }
         }
       },

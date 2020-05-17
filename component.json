@@ -10,7 +10,7 @@
         "viewClass": "TextFieldView",
         "placeholder": "localhost",
         "help": {
-          "description": "Server to connect to. You can use 'host\\\\instance' to connect to named instance."
+          "description": "Server to connect. You can use 'host\\\\instance' to connect to named instance."
         }
       },
       "port": {
@@ -19,7 +19,7 @@
         "viewClass": "TextFieldView",
         "placeholder": "1433",
         "help": {
-          "description": "Port to connect to. If not provided default port 1433 is used. Don't set when connecting to named instance."
+          "description": "Port to connect. If not provided default port 1433 is used. Don't set when connecting to named instance."
         }
       },
       "database": {
@@ -28,26 +28,10 @@
         "viewClass": "TextFieldView",
         "placeholder": "database",
         "help": {
-          "description": "Database to connect to. Default is dependent on server configuration."
+          "description": "Database to connect. Default is dependent on server configuration."
         }
       },
-      "encrypt": {
-        "label": "Encrypt",
-        "viewClass": "CheckBoxView",
-        "help": {
-          "description": "Enable this option if you're using Windows Azure"
-        }
-      },
-      "domain": {
-        "label": "Domain",
-        "required": false,
-        "viewClass": "TextFieldView",
-        "placeholder": "domain",
-        "help": {
-          "description": "If domain is provided, the connection to SQL Server will be done using domain login."
-        }
-      },
-      "username": {
+        "username": {
         "label": "Username",
         "required": true,
         "viewClass": "TextFieldView",
@@ -63,6 +47,22 @@
         "placeholder": "password",
         "help": {
           "description": "Password to use for authentication with the database."
+        }
+      },
+      "domain": {
+        "label": "Domain",
+        "required": false,
+        "viewClass": "TextFieldView",
+        "placeholder": "domain",
+        "help": {
+          "description": "If domain is provided, the connection to SQL Server will be done using domain login."
+        }
+      },
+      "encrypt": {
+        "label": "Encrypt",
+        "viewClass": "CheckBoxView",
+        "help": {
+          "description": "Enable this option if you're using Windows Azure"
         }
       }
     }
@@ -80,9 +80,9 @@
           "label": "SQL Query",
           "required": true,
           "viewClass": "TextAreaWithNoteView",
-          "placeholder": "INSERT INTO films (code,title,kind) VALUES (@code:number,@title:string,@kind:string)",
+          "placeholder": "SELECT * FROM Employee WHERE EmpID = 322",
           "help": {
-            "description": "SQL query to execute. You can use parameters of message body as <i>@value:number</i> and type is <i>:type</i>"
+            "description": "SQL SELECT Statement to execute"
           }
         }
       },
@@ -101,9 +101,9 @@
           "properties": {
             "query": {
               "type": "string",
-              "title": "SQL Query",
+              "title": "SQL SELECT Statement",
               "required": true,
-              "description": "SQL query to execute."
+              "description": "Executes a SELECT statement that fetches potentially multiple database rows from the database"
             }
           }
         }
@@ -112,7 +112,7 @@
   },
   "triggers": {
     "selectTrigger": {
-      "title": "SELECT",
+      "title": "SQL SELECT Statement",
       "main": "./lib/actions/select.js",
       "type": "polling",
       "help": {
@@ -121,12 +121,12 @@
       },
       "fields": {
         "query": {
-          "label": "SQL Query",
+          "label": "SQL SELECT Statement",
           "required": true,
           "viewClass": "TextAreaWithNoteView",
-          "placeholder": "INSERT INTO films (code,title,kind) VALUES (@code:number,@title:string,@kind:string)",
+          "placeholder": "SELECT * FROM Employee WHERE EmpID = 322",
           "help": {
-            "description": "SQL SELECT Statement to execute."
+            "description": "SQL SELECT Statement to execute"
           }
         }
       },

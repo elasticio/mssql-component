@@ -126,7 +126,7 @@
           "viewClass": "TextAreaWithNoteView",
           "placeholder": "INSERT INTO films (code,title,kind) VALUES (@code:number,@title:string,@kind:string)",
           "help": {
-            "description": "SQL query to execute. You can use parameters of message body as <i>@value:number</i> and type is <i>:type</i>"
+            "description": "SQL SELECT Statement to execute."
           }
         }
       },

@@ -1,4 +1,5 @@
-# mssql-component [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+[![CircleCI](https://circleci.com/gh/elasticio/mssql-component.svg?style=svg)](https://circleci.com/gh/elasticio/mssql-component)
+# mssql-component 
 > elastic.io integration component for Microsoft SQL Server
 
 # mssql-component

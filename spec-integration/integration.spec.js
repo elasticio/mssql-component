@@ -92,7 +92,7 @@ describe('Integration test', () => {
       select.process.call({
         emit: emitter,
         logger,
-      }, msg, cfg).catch((err) => done(err));
+      }, msg, cfg).catch(err => done(err));
     });
   });
 
@@ -124,7 +124,7 @@ describe('Integration test', () => {
       select.process.call({
         emit: emitter,
         logger,
-      }, msg, cfg).catch((err) => done(err));
+      }, msg, cfg).catch(err => done(err));
     });
   });
 
@@ -158,7 +158,7 @@ describe('Integration test', () => {
       select.process.call({
         emit: emitter,
         logger,
-      }, msg, cfg, {}).catch((err) => done(err));
+      }, msg, cfg, {}).catch(err => done(err));
     });
   });
 });

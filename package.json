@@ -27,7 +27,7 @@
   "scripts": {
     "pretest": "eslint lib spec spec-integration --ext .json --ext .js --fix",
     "test": "NODE_ENV=test mocha spec/*",
-    "integration-test": "NODE_ENV=test mocha spec-integration/* --exit"
+    "integration-test": "mocha spec-integration --recursive --timeout 10000 --exit"
   },
   "dependencies": {
     "bluebird": "3.4.6",

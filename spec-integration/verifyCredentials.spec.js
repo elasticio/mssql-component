@@ -14,10 +14,6 @@ describe('Integration test verify credentials', () => {
     if (!process.env.MSSQL_SERVER) { throw new Error('Please set MSSQL_SERVER env variable to proceed'); }
     if (!process.env.MSSQL_DATABASE) { throw new Error('Please set MSSQL_DATABASE env variable to proceed'); }
   });
-  after(() => {
-    process.exit();
-  });
-
   const cfg = {
     username: process.env.MSSQL_USERNAME,
     password: process.env.MSSQL_PASSWORD,
@@ -29,7 +25,7 @@ describe('Integration test verify credentials', () => {
     encrypt: process.env.MSSQL_ENCRYPT,
   };
 
-  it('should insert data', (done) => {
+  it('should successfully verify credentials', (done) => {
     verifyCredentials.call({ logger }, cfg, (err, result) => {
       if (err) {
         done(err);

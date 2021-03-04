@@ -8,7 +8,7 @@ MSSQL Component component for the [elastic.io platform](http://www.elastic.io)
 ![image](https://user-images.githubusercontent.com/56208/29715706-b4930bdc-89a8-11e7-8a0d-969959d26dd6.png)
 
 ## Environment Variables
-1. LOG_LEVEL - controls verbosity of logger. Possible values: `trace`, `debug` `info`, `warn`, `error`. Default: `info`
+No required Environment Variables.
 
 ## Before you Begin
 
@@ -84,15 +84,6 @@ Following types are supported:
 more details can be found [here](https://github.com/elasticio/mssql-component/blob/master/lib/actions/insert.js#L25)
 
 Component supports dynamic incomig metadata - as soon as your query is in place it will be parsed and incoming metadata will be generated accordingly.
-
-## Known issues
-
-No known issues are there yet.
-
-## TODOs
- * Support for BULK upload
- * Support for DELETE and UPDATE statements
- * Support for binary attachments
 
 ## License
 
